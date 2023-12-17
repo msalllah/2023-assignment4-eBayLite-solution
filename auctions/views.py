@@ -9,6 +9,25 @@ from django.contrib.auth.decorators import login_required
 from .models import User, Listing, Category
 from .forms import ListingForm, BidForm, CommentForm
 
+
+def search(request):
+    if request.method == "POST":
+        
+        item = request.POST['q'].strip()
+
+        games =Listing.objects.all()
+        if item.lower() in map(str.lower, [i.title.lower() for i in games]):
+            for i in games:
+               if i.title.lower()==item:
+        
+                    return redirect("listing", listing_id=item.id)
+        return render(
+            request, "auctions/search.html", {
+                "title": item,
+                "content" : [i for i in games if item.lower() in i.title.lower()]
+            }
+        )
+
 def login_view(request):
     if request.method == "POST":
 
@@ -61,6 +80,14 @@ def register(request):
         return redirect("index")
     else:
         return render(request, "auctions/register.html")
+
+#home page
+
+def home(request):
+    return render(request, "auctions/home.html", {
+        'listings': Listing.objects.all().filter(active=True).order_by('-created_at'),
+        'banner': 'Active Listings'
+    })
 
 
 def index(request):

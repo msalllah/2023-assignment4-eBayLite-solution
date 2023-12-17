@@ -8,28 +8,72 @@
         <title>{% block title %}Auctions{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="https://cdn.simplecss.org/simple.css">
         <link rel="stylesheet" type="text/css" href="{% static 'auctions/uaa490styles.css' %}" >
+        <link rel="stylesheet" href="{% static 'auctions/static.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>css Responsive Contact Form With Google Maps</title>
+        
+      
 </head>
     <body>
         <header>
-            <h1>Auctions "R" Us</h1>
+           
             <nav>
                 <span>
+                    <a href="{%url 'home'%}">Home </a>
                     <a href="{% url 'my-listings' %}">My Listings</a>
                     <a href="{% url 'index' %}">Active Listings</a>
                     <a href="{% url 'categories' %}">Categories</a>
                     <a href="{% url 'my-watchlist' %}">My Watchlist</a>
                     <a href="{% url 'create-listing' %}">Create Listing</a>
+                   
                 </span>
+                <form action="{% url 'search' %}" method="POST">{% csrf_token %}
+<input class="form-control search" type="text" name="q" placeholder="Search" aria-label="Search">
+<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button> 
+
+</form>
+
+               
                 <span>
                     {% if user.is_authenticated %}
-                        Welcome <strong>{{ user.username }}!</strong>
-                        <a href="{% url 'logout' %}">Log Out</a>
-                    {% else %}
-                        <a href="{% url 'login' %}">Log In</a>
-                        <a href="{% url 'register' %}">Register</a>
-                    {% endif %}
-                </span>
+                    <div class="profile-dropdown">
+                        <div class="profile-dropdown-btn" onclick="toggle()">
+                            <div class="profile-img"><i class="og-dating-1-a1a34ab3445740fcadf8699850c8333b.jpg"></i>
+                                <i class="fa-solid fa-circle"></i>
+                            </div>
+                        </div>
+                       </div> 
+                       <span>
+                        MS <strong>{{ MS }}</strong>
+                   
+                      <i class="fa-solid fa-angle-down"></i>
+                    </span>
+                        
+                       <div>
+                          
+                                <li class="profile-dropdown-list-item">
+                                    <a href="#"><i class="fa-solid fa-user"></i> Edit Profile</a>
+                                    <a href="#"><i class="fa-solid fa-gear"></i>Setting</a>
+                                    <a href="#"><i class="fa-regular fa-circle-question"></i>Help & Support</a>
+                                    <hr />
+                                    <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Log Out</a>
+                                    {% else %}
+                                        <a href="{% url 'login' %}">Log In</a>
+                                        <a href="{% url 'register' %}">Register</a>
+                                    {% endif %}
+                                                  
+                                       
+                                                                          
+
+                            </li>
+
+                        </ul>
+                       </div>
+                   
+                       <script src="script.js"></script>     
+                
             </nav>
+           
         </header>
         <main>
             {% for m in messages %}
@@ -37,7 +81,69 @@
             {% endfor %}
             {% block main %}
             {% endblock %}
-        </main>
 
+        </main>
+<footer>
+    <div class="info-section">
+        <div class="info-container">
+            
+               
+          
+          <h1>HAND TIME</h1>
+          <hr>
+          <div class="contact-wrap">
+            <div class="contact-in" style="width: 100%;">
+               
+          <table style="width:100%;table-layout: fixed">
+            <td class="contact-form">
+               
+                 <h1>CONTACT INFO</h1>
+                <h2><i class="fa-solid fa-mobile-screen-button"></i>Phone</h2>
+                <p>123-456-7890</p>
+                <h2><i class="fa-solid fa-envelope"></i>Email</h2>
+                <p>ebaycompany@gmail.com</p>
+                <h2><i class="fa-solid fa-location-dot"></i>Adddress</h2>
+                <p>Anchorage Alaska</p>
+</td>
+
+            <td> <h2>CONTACT US</h2>
+                <form>
+                    <input type="text" placeholder="Full Name"  class="contact-in-input">
+                    <input type="text" placeholder="Email"  class="contact-in-input">
+                    <input type="text" placeholder="Subject"  class="contact-in-input">
+                    <textarea placeholder="Message" class="contact-in-textarea"></textarea>
+                    <input type="submit" value="SUBMIT" class="contact-in-btn">
+                </form></td>
+            <td>  <h2>NEWS LETTER</h2>
+                <input type="text" placeholder="Enter your Email">
+                <button>SUBSCRIBE</button>
+                <div class="social-icon">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter"></i></a>
+                    <a href=""><i class="fa-brands fa-github"></i></a>
+                </div></td>
+        </table> 
+    </div>
+</div>
+        
+
+
+                      
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+       
+ 
+
+        <div class="Reserved">
+            <h3>&copy;2023 All Right Reserved. by MS </h3>
+
+        </div>
+
+    </div>
+</footer>
      </body>
 </html>

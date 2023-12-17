@@ -1,0 +1,20 @@
+{% extends "auctions/layout.html" %}
+
+{% block main %}
+
+<h2>Home</h2>
+
+<article>
+    {% for c in categories %}
+        <section>
+            <h3><a href="{% url 'Home'  %}">{{ c.name }}</a></h3>
+            {% if c.image %}
+                <div style="display:flex;justify-content:space-evenly;">
+                    
+                </div>
+            {% endif %}
+        </section>
+    {% endfor %}
+</article>
+
+{% endblock %}

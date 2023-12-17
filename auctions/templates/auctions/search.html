@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+
+
+{% block main %}
+    <article>
+        <div>
+            <h2>Search Results for '{{title}}'</h2>
+        </div>
+        <div>
+            {% for listing in content %}
+            <a type="button" href="{% url 'listing' listing_id=listing.id %}">
+                
+                <div>{{ listing.title }}</div>
+            </a>
+            
+            {% endfor %}
+        </div>
+    </article>
+
+
+{% endblock %}

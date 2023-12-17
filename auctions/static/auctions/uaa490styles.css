@@ -10,6 +10,7 @@ body > header {
 
 body {
   grid-template-columns: 10% 80% 10%;
+ 
 }
 
 .form-control {
@@ -23,7 +24,9 @@ body {
 .errorlist, .error {
   color: red;
 }
-
+ /*.R{
+  color: red !important;
+}*/
 
 .listing-description, .listing-categories {
   border: 1px solid black;
